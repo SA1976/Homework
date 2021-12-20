@@ -5,6 +5,9 @@
 
 """
 import pprint
+from time import time
+start = time()
+
 
 dict = {}
 lst = []
@@ -25,7 +28,9 @@ print(dict)
 # print(set(lst))
 #print(lst)
 
+end = time()
 
+print(end - start)
 
 
 

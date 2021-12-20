@@ -1,17 +1,20 @@
 import random
-
+# поиск в отсортированном списке, находим середину и смотрим с какой  от стороны
+# середины находится нужный элемент. В результате середина должна совпасть с
+# искомым элементом (или его нет в списке) https://prog-cpp.ru/search-binary/
 
 #                   30                 10      20
 def binary_search(array, key_value, left=0, right=None):
-    if right is None:
+    if right is None: # если граница не передается( то есть не нужно искать в срезе) -
+                             # она устанавливается по краю списка
         right = len(array)
 
     middle = (left + right) // 2
     while array[middle] != key_value and left <= right:
         if array[middle] < key_value:
-            left = middle + 1
+            left = middle + 1 # этим ускоряется поиск: граница сдвигается на след элемент за середину
         else:
-            right = middle - 1
+            right = middle - 1 # то же самое
 
         middle = (left + right) // 2
 

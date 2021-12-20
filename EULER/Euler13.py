@@ -1,3 +1,11 @@
+"""
+Еще использовали BigInt из math
+
+
+
+"""
+
+
 from pprint import pprint
 
 d = [
@@ -103,10 +111,55 @@ d = [
     53503534226472524250874054075591789781264330331690
    ]
 
-d_1_iter = []
 
-a = sum(lambda number: number % 1000000 for number in d)
-d_1_iter = list(map(lambda x: x // 1000000, d))
+# 5537376230
 
-pprint(d_1_iter)
-print(a)
+def my_sol_euler13(): #0,001
+    a = 0
+
+    for i in range(4):
+        a = (a + sum(number % 10000000000 for number in d))//10000000000 # отрезаем хвосты по 10 цифр и суммируем их
+        # каждый раз сумму обезаем, что бы остались только цифры необходимые для след итерации
+
+        for j in range(len(d)):  # отрезаем от чисел уже суммированнные хвосты
+            d.insert(0, d.pop() // 10000000000)
+
+
+    a += sum(number for number in d)
+
+    return a
+
+def pr_Euler_solution():  # в суммировании участвуют только первые 11 знаков (проверено с 12 и 13) время - 0,0003
+
+    answer = 0
+    for i in range(100):
+        answer += d[i] // 10**39
+
+    return answer
+
+
+def te_ting1(): # офигеть 1 строка!!!!!!! время 8 -05
+    answer = repr(sum(d))
+
+    print(answer[0:10])
+    # print(type(repr(sum(d))))
+    # print(repr(sum(d)))
+
+    return answer[0:10]
+
+
+def main():
+    from time import time
+    start = time()
+
+
+    #print('total: ', my_sol_euler13())
+    #print(pr_Euler_solution())
+    print(te_ting1())
+
+
+    end = time()
+    print(end - start)
+
+if __name__ == '__main__':
+    main()

@@ -144,23 +144,24 @@ a2 + b2 = c2
 84 187 205 42025
 45 200 205 42025
 """
-
+from time import time
+start = time()
 
 c = 5
 d = True
 
 
-###очень круто и быстро:
-# PERIMETER = 1000
-# for a in range(1, PERIMETER + 1):
-#     for b in range(a + 1, PERIMETER + 1):
-#         c = PERIMETER - a - b
-#         if a * a + b * b == c * c:
-#             print(f'{a}, {b}, {c}, {c*c} =  Bingo!!!!')
+###очень круто и быстро 0.4820890426635742 не моё:
+PERIMETER = 1000
+for a in range(1, PERIMETER + 1):
+    for b in range(a + 1, PERIMETER + 1):
+        c = PERIMETER - a - b
+        if a * a + b * b == c * c:
+            print(f'{a}, {b}, {c}, {c*c} =  Bingo!!!!')
 
 """
  a = 2mn, b = m2 − n2, c = m2 + n2 , m > n
- Скорость такая же!
+ время 0.7892069816589355 
 """
 # for n in range(1, 1000):
 #     for m in range(n+1, 1000):
@@ -170,4 +171,5 @@ d = True
 #         if a + b + c == 1000:
 #             print(f'{a}, {b}, {c}, {c ** 2} =  Bingo!!!!')
 
-
+end = time()
+print(end - start)

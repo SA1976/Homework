@@ -23,24 +23,24 @@ print(rpow(2, 6))
 
 
 def qsort(nums, first_idx, last_idx, revers=False):
-    if first_idx >= last_idx:
+    if first_idx >= last_idx: # конец цикла индексы сошлись в середине
         return
 
-    i, j = first_idx, last_idx
-    middle_value = nums[(first_idx + last_idx) // 2]
+    i, j = first_idx, last_idx # двигаемся от концов списка к середине
+    middle_value = nums[(first_idx + last_idx) // 2] # делим последовательсность пополам
 
-    while i <= j:
+    while i <= j: # перебераем элементы и сравниваем их с средним элементом
         while nums[i] < middle_value:
-            i += 1
+            i += 1 # если левый меньше середины - двигаемся к следующему
         while nums[j] > middle_value:
-            j -= 1
+            j -= 1 # если правый больше середины - двигаемся к предидущему
 
         if i <= j:
-            nums[i], nums[j] = nums[j], nums[i]
-            i, j = i+1, j-1
+            nums[i], nums[j] = nums[j], nums[i] # когда найдены два таких элемента меняем их местами
+            i, j = i+1, j-1 # после этого сдвигаем снова индексы до тех пор пока они не сойдутся в середине
 
-    qsort(nums, first_idx, j)
-    qsort(nums, i, last_idx)
+    qsort(nums, first_idx, j) # рекурсия только для левой части
+    qsort(nums, i, last_idx) #  рекурсия только для правой части
 
 
 lst = [random.randint(10, 99) for _ in range(20)]

@@ -79,10 +79,10 @@ print()
 
 # вычисляем и добавляем каждому ученику средний балл
 rating = [line + ', ' + str(round(int(line.split(', ')[-1]) / len(line.split(', ')[1:-1]), 2)) for line in rating]
-mprint(rating, 3) #                                                                        ?
-print()
+mprint(rating, 3)                                                                  # round округление до 2-го знака
+print(rating)
 
-# сортируем по сумме оценок
+# сортируем по сумме оценок sort сортирует только списки, тут он ищет в слайсе
 rating.sort(key=lambda element: sum(int(value) for value in element.split(', ')[1:-2]), reverse=True)
 mprint(rating, 3)
 print()

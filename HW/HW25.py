@@ -28,7 +28,7 @@
 
 def order_formation(a):
 
-    res = list(map(lambda elm: (elm[0], round(elm[2] * elm[3], 2) if elm[2] * elm[3] >= 100 else round(elm[2] * elm[3] + 10, 2)), a))
+    res = list(map(lambda elm: (elm[0], round(elm[2] * elm[3] if elm[2] * elm[3] >= 100 else elm[2] * elm[3] + 10, 2)), a))
 
     return res
 

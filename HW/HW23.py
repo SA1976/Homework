@@ -27,12 +27,15 @@ def is_year_leap(year):
 
     return leap_year
 
+def main():
+    year_number = int(input('Enter year: '))
 
-year_number = int(input('Enter year: '))
+    result = is_year_leap(year_number)
 
-result = is_year_leap(year_number)
+    if result:
+        print('Year', year_number, 'is a leap year')
+    else:
+        print('Year', year_number, 'is not a leap year')
 
-if result:
-    print('Year', year_number, 'is a leap year')
-else:
-    print('Year', year_number, 'is not a leap year')
+if __name__ == '__main__':
+    main()

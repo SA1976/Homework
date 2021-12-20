@@ -78,6 +78,8 @@ for _ in range(m):
     array.append([random.randint(1, 50) for _ in range(m)])
 print()
 
+# можно было и вот так:
+# array = [[randint(10, 99) for _ in range(m)] for _ in range(m)]
 
 print('Array before modification:')  # функция печати вызывается из функции обработки после создания сумм столбцов
 
