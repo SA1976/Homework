@@ -7,12 +7,14 @@
 
 
 class MeterClass:
-    min = 0
-    max = 100
+    a = 'electricity'
+    b = 'water'
+    c = 'gas'
+    d = 'other'
 
-    def __init__(self, value=0):
-        self.max = MeterClass.max  # макимальное и минимальное значение будут привязаны к заданным для всего класса
-        self.min = MeterClass.min
+    def __init__(self, value=0, max = 100, min = 0):
+        self.max = max
+        self.min = min
         self.collector = 0  # хранит количество совершённых полных оборотов счетчика
 
         if self.min <= value < self.max:  # если значение при установке не попадает в границы "min-max"
@@ -31,8 +33,13 @@ class MeterClass:
     def get_meter_val(self):  # данные коллектора оборотов и текущее значение счетчика
         return (f'Turnovers completed {self.collector}: meter\'s value {self.present_value}')
 
-
 meter1 = MeterClass()
+print('meter1: ', meter1.get_meter_val())
+print('meter1 max value:', meter1.max)
+print('meter1 min value:', meter1.min)
+print()
+
+meter1 = MeterClass(34, 200, 10)
 print('meter1: ', meter1.get_meter_val())
 print('meter1 max value:', meter1.max)
 print('meter1 min value:', meter1.min)
@@ -40,6 +47,8 @@ print()
 
 meter2 = MeterClass(-35) # начальное значение меньше min
 print('meter2: ', meter2.get_meter_val())
+print('meter2 max value:', meter2.max)
+print('meter2 min value:', meter2.min)
 print()
 
 meter2 = MeterClass(110) # начальное значение больше max
