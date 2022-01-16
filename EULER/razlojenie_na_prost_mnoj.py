@@ -79,8 +79,6 @@ def main():
 
     n = 76576500
 
-
-
     divisors = old_list_of_divisor(n, eratosfen_sieve(n)) #divisors = {} # словарь простых делителей числа n со степенями
 
     # for value in divisors.values():

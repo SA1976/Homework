@@ -78,7 +78,7 @@ file.close()
 print()
 pp(lst)
 
-# read by line без readline или radlines
+# read by line без readline или readlines
 lst = []
 pp(lst)
 file = open('example_file.txt')

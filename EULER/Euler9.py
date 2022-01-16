@@ -157,7 +157,7 @@ for a in range(1, PERIMETER + 1):
     for b in range(a + 1, PERIMETER + 1):
         c = PERIMETER - a - b
         if a * a + b * b == c * c:
-            print(f'{a}, {b}, {c}, {c*c} =  Bingo!!!!')
+            print(f'{a}, {b}, {c}, {a*b*c} =  Bingo!!!!')
 
 """
  a = 2mn, b = m2 − n2, c = m2 + n2 , m > n

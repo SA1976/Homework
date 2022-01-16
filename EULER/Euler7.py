@@ -6,53 +6,82 @@
 """
 
 from time import time
-start = time()
-import math
-#int(math.sqrt(n))+1
-prime_list = [2]
-#dict = {}
-n = 3
-lst = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541]
-while len(prime_list) < 10001:
-    check = True
-    f = int(math.sqrt(n))+1
-    for i in range(3, f, 2):
-        if n % i == 0:
-            check = False
-            break
-    if check:
-        prime_list.insert(0, n)
-        #dict[n] = f
-    n += 2
-print(prime_list[::-1])
+from math import sqrt, log, floor
 
-#print(lst)
 
-#print(dict)
+def my_sol(n): # формирует список простых чисел до n
+    prime_list = list(0 for _ in range(n))
+    prime_list[0] = 2
+    candidate = 3
+    idx = 1
+    while prime_list[-1] == 0:
+        check = True
+        fin = int(sqrt(candidate))+1
+        for i in range(3, fin, 2):
+            if candidate % i == 0:
+                check = False
+                break
+        if check:
+            prime_list[idx] = candidate
+            idx += 1
+        candidate += 2
+    print(prime_list[-1])
 
-# import math
-# #int(math.sqrt(n))+1
-# prime_list = [2]
-# #dict = {}
-# col = 2
-# n = 3
-# #lst = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541]
-# while prime_list[-1] < 10001:
-#     check = True
-#     f = int(math.sqrt(n))+1
-#     for i in range(3, f, 2):
-#         if n % i == 0:
-#             check = False
-#             break
-#     if check:
-#         prime_list.insert(0, n)
-#         col +=n
-#         #dict[n] = f
-#     n += 2
-# #print(prime_list[::-1])
-# print(col)
-# #print(lst)
-# #print(dict)
+def my_sol_mod(n): # убран список - выдает только последнее значение
 
-end = time()
-print(end - start)
+    candidate = 3
+    idx = 1
+    while True:
+        check = True
+        fin = int(sqrt(candidate))+1
+        for i in range(3, fin, 2):
+            if candidate % i == 0:
+                check = False
+                break
+        if check:
+            idx += 1
+            if idx == n:
+                break
+        candidate += 2
+    print(candidate)
+
+def euler_sol(m): # решето с булевым списком
+    def eratosthene(n):
+        isPrime = [True] * (n + 1)
+        primes = []
+        for i in range(2, n + 1):
+            if isPrime[i]:
+                for j in range(i, n + 1, i):
+                    isPrime[j] = False
+                primes.append(i)
+        print(isPrime)
+        return primes
+
+    def primeNumb(n):
+        limit = n * (log(n) + log(log(n)) - 0.5)
+        primes = eratosthene(floor(limit))
+        print(primes)
+        return primes[n - 1]
+
+    print(primeNumb(m))
+
+
+def main():
+    n = 10001
+    # start = time()
+    # my_sol(n)
+    # end = time()
+    # print(end - start)
+    #
+    # start = time()
+    # my_sol_mod(n)
+    # end = time()
+    # print(end - start)
+
+    start = time()
+    euler_sol(n)
+    end = time()
+    print(end - start)
+
+if __name__ == '__main__':
+    main()
